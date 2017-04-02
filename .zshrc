@@ -52,6 +52,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# proxy setting
 export http_proxy=http://127.0.0.1:8123
 export https_proxy=http://127.0.0.1:8123
 export NO_PROXY=192.168.99.*,*.local,169.254/16,*.example.com,192.168.59.*
@@ -64,3 +65,7 @@ export PATH="/usr/local/opt/libxml2/bin:$PATH"
 
 alias jp1="ssh root@139.162.99.97"
 alias ccc="cap production deploy"
+
+# rbenv config
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
