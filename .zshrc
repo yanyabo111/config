@@ -48,24 +48,44 @@ ZSH_THEME="steeef"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
 
-# proxy setting
-export http_proxy=http://127.0.0.1:8123
-export https_proxy=http://127.0.0.1:8123
+# proxy
+export http_proxy=http://127.0.0.1:1087
+export https_proxy=http://127.0.0.1:1087
 export NO_PROXY=192.168.99.*,*.local,169.254/16,*.example.com,192.168.59.*
+export JAVA_OPTS="$JAVA_OPTS -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=1087"
 
-# Homebrew
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-
-alias ppp="sudo xattr -r -d com.apple.quarantine"
-export PATH="/usr/local/opt/libxml2/bin:$PATH"
+# homebrew
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin/arcanist/bin:$PATH"
 
 alias jp1="ssh root@139.162.99.97"
-alias ccc="cap production deploy"
+alias us="ssh yanyabo@106.14.29.223"
 
-# rbenv config
+# cocoapods
+alias pi="pod install --verbose --no-repo-update"
+alias pu="pod update --verbose --no-repo-update"
+
+# rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# go
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+# rvm
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Android
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# oh-my-zsh
+plugins=(rails git textmate ruby lighthouse zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
+
+alias ccc="cap production deploy"
+alias ttt="cap production invoke:rake TASK=odps:all"
+alias ddd="cap production db:pull"
